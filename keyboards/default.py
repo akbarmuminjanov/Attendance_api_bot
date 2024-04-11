@@ -3,8 +3,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 menu = ReplyKeyboardMarkup(
     keyboard= [
         [
-            KeyboardButton(text="📗 malumot"),
-            KeyboardButton(text="📃 xabarlar"),
+            KeyboardButton(text="📗 информация"),
+            KeyboardButton(text="📃 сообщения"),
         ]
     ],
     resize_keyboard=True

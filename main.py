@@ -32,13 +32,13 @@ class Messages(StatesGroup):
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
     
-    await message.answer(f"Attendance botga Xush kelibsiz", reply_markup=menu)
+    await message.answer(f"Добро пожаловать в Attendance bot", reply_markup=menu)
 
 
 @dp.message_handler(Text(startswith='📗'))
 async def send_welcome(message: types.Message):
 
-    await message.answer("Parvoz o'quvchisini IDsini kiriting")
+    await message.answer("введите id ребенка")
 
     await User_id.tg_id.set()
 
@@ -66,7 +66,7 @@ async def state_handler(message: types.Message, state: FSMContext):
 @dp.message_handler(Text(startswith='📃'))
 async def send_welcome(message: types.Message):
 
-    await message.answer("Parvoz o'quvchisini IDsini kiriting")
+    await message.answer("введите id ребенка")
 
     await Messages.tg_id.set()
 
@@ -82,14 +82,14 @@ async def state_handler(message: types.Message, state: FSMContext):
 
     info = get_student_info(id)
 
-    tex = "Xabarlar\n"
+    tex = "Сообщения\n"
     for i in info['marks']:
         checks = "✅" if i["checks"] else "❌"
         date = i["attendance"]['created']
-        tex+=f"sana: {date} {checks}\n"
+        tex+=f"дата: {date} {checks}\n"
 
     for i in info['messages']:
-        tex += f"Ustozdan xabar:  {i['body']}\n"
+        tex += f"Сообщение от наставника:  {i['body']}\n"
         
 
     await message.answer(f"{tex}", reply_markup=menu)
